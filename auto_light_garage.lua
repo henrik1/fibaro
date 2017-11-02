@@ -55,4 +55,9 @@ function run ()
   local lightSensorState = tonumber(fibaro:getValue(LIGHT_SENSOR_ID, 'value'));
 end
 
+-- allow only one instance of this scene to run at a time
+if (fibaro:countScenes() > 1) then
+    fibaro:abort()
+end
+
 run();
